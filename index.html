@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fevzi Bağrıaçık | Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0f172a; /* Dark Slate */
+            --card-bg: #1e293b; /* Lighter Slate */
+            --text-primary: #f8fafc; /* White-ish */
+            --text-secondary: #94a3b8; /* Grey */
+            --accent-color: #38bdf8; /* Sky Blue */
+            --accent-hover: #0ea5e9;
+            --border-color: #334155;
+            --gold-color: #fbbf24; /* Prestijli programlar için altın rengi detayı */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
+        header {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+        }
+
+        .logo {
+            width: 50px; 
+        }
+
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .social-links a {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 60px 0 60px;
+            text-align: center;
+        }
+
+        .hero-img {
+            width: 250px; /* Fotoğraf boyutu büyütüldü */
+            height: 250px; /* Fotoğraf boyutu büyütüldü */
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 30px;
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
+            background-color: var(--card-bg);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .location {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero p {
+            max-width: 750px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        /* SECTION COMMON */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            position: relative;
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* EDUCATION & PRESTIGIOUS PROGRAMS */
+        .education-wrapper {
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .education-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .edu-school { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 5px; }
+        .edu-degree { color: var(--accent-color); font-weight: 600; font-size: 1.1rem; margin-bottom: 10px; }
+        .edu-date { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 10px; }
+        .edu-gpa { font-weight: bold; color: var(--text-primary); background: rgba(56, 189, 248, 0.1); padding: 5px 15px; border-radius: 20px; }
+
+        /* PRESTIGIOUS PROGRAMS GRID */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .program-card {
+            background: linear-gradient(145deg, #1e293b, #162032);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        
+        @media (min-width: 768px) {
+            .program-card {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        .program-card:hover {
+            border-color: var(--gold-color);
+            transform: translateY(-5px);
+        }
+
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background-color: var(--gold-color);
+        }
+
+        .program-icon {
+            font-size: 1.8rem;
+            color: var(--gold-color);
+            background: rgba(251, 191, 36, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+        }
+
+        .program-content h4 { font-size: 1.15rem; color: var(--text-primary); font-weight: 700; margin-bottom: 5px; }
+        .program-org { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 8px; font-style: italic; display: block; }
+        .program-desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.4; }
+        .badge { 
+            display: inline-block; 
+            font-size: 0.75rem; 
+            background: var(--gold-color); 
+            color: #000; 
+            padding: 2px 8px; 
+            border-radius: 4px; 
+            font-weight: bold; 
+            margin-bottom: 5px;
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .skill-tag {
+            background-color: rgba(30, 41, 59, 0.5);
+            color: var(--text-primary);
+            padding: 12px 25px;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            font-size: 1rem;
+            transition: 0.3s;
+            cursor: default;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            background-color: rgba(56, 189, 248, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* EXPERIENCE */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            border-left: 2px solid var(--border-color);
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .timeline-item { margin-bottom: 50px; position: relative; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -37px; top: 5px;
+            width: 12px; height: 12px; background-color: var(--accent-color);
+            border-radius: 50%; border: 2px solid var(--bg-color);
+            box-shadow: 0 0 0 2px var(--accent-color);
+        }
+
+        .timeline-date { font-size: 0.9rem; color: var(--accent-color); margin-bottom: 5px; display: block; font-weight: 600; }
+        .timeline-title { font-size: 1.3rem; color: var(--text-primary); margin-bottom: 5px; font-weight: 700; }
+        .timeline-company { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 15px; font-style: italic; }
+        .timeline-desc { color: var(--text-secondary); font-size: 1rem; line-height: 1.6; }
+
+        /* PROJECTS */
+        .projects-section { background-color: #0c1222; }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .project-title { font-size: 1.25rem; margin-bottom: 10px; font-weight: 700; color: var(--text-primary); }
+        .project-desc { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6; }
+        .project-tech {
+            font-size: 0.8rem; color: var(--accent-color); margin-bottom: 15px;
+            font-family: monospace; background: rgba(56, 189, 248, 0.1);
+            display: inline-block; padding: 4px 8px; border-radius: 6px;
+        }
+        .project-links { margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 15px; }
+        .project-links a { color: var(--text-primary); font-size: 0.85rem; margin-right: 15px; display: inline-flex; align-items: center; }
+        .project-links a:hover { color: var(--accent-color); }
+        
+        /* COMMUNITY & VOLUNTEERING */
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+        }
+
+        .activity-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            height: 100%;
+        }
+
+        .activity-card h3 { 
+            margin-bottom: 25px; 
+            font-size: 1.5rem; 
+            color: var(--text-primary); 
+            display: flex; 
+            align-items: center; 
+            gap: 12px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .activity-list { list-style: none; }
+        .activity-list li { margin-bottom: 20px; color: var(--text-secondary); font-size: 0.95rem; display: flex; gap: 15px; }
+        .activity-list li i { color: var(--accent-color); margin-top: 4px; flex-shrink: 0; }
+        .activity-role { color: var(--text-primary); font-weight: 600; display: block; margin-bottom: 2px; }
+        .activity-place { font-size: 0.9rem; opacity: 0.8; }
+
+        /* CERTIFICATES */
+        .cert-section {
+            background-color: #0c1222;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .cert-card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: 0.3s;
+        }
+
+        .cert-card:hover {
+            border-color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        .cert-icon {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            background: rgba(56, 189, 248, 0.1);
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        .cert-info strong { display: block; color: var(--text-primary); margin-bottom: 2px; font-size: 0.95rem; }
+        .cert-info span { font-size: 0.85rem; color: var(--text-secondary); }
+
+        /* FOOTER */
+        footer {
+            text-align: center; padding: 40px 0; color: var(--text-secondary);
+            font-size: 0.9rem; border-top: 1px solid var(--border-color); margin-top: 0;
+            background-color: var(--bg-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .activities-grid, .programs-grid, .cert-grid { grid-template-columns: 1fr; }
+            .timeline { padding-left: 20px; }
+            .timeline-item::before { left: -27px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo"></div>
+            <div class="social-links">
+                <a href="https://github.com/fevzibagriacik" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/fevzi-bağrıaçık-401252248/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:fevzi.bagriacik1905@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                <!-- Telefon numarası kaldırıldı -->
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <img 
+                src="124450541.jpg" 
+                onerror="this.src='https://ui-avatars.com/api/?name=Fevzi+Bagriacik&background=38bdf8&color=fff&size=150&font-size=0.5'" 
+                alt="Fevzi Bağrıaçık" 
+                class="hero-img"
+            >
+            
+            <h1>Hi, I'm Fevzi Bağrıaçık</h1>
+            <h2>Computer Engineering Student</h2>
+            <div class="location">
+                <i class="fas fa-map-marker-alt"></i> Adana / Manisa, Turkey
+            </div>
+            
+            <p>
+                I am a Computer Engineering student driven by a passion for building scalable mobile applications and immersive digital experiences. 
+                With a strong foundation in <strong>Game Development (Unity/C#)</strong> and modern <strong>Mobile Architecture (Flutter/Kotlin)</strong>, 
+                I bridge the gap between interactive design and robust software engineering. 
+            </p>
+        </section>
+
+        <!-- Education & Advanced Programs Section -->
+        <section id="education">
+            <h3 class="section-title">Education & Advanced Training</h3>
+            
+            <!-- University Degree -->
+            <div class="education-wrapper">
+                <div class="education-card">
+                    <div class="edu-school"><i class="fas fa-university"></i> Manisa Celal Bayar University</div>
+                    <div class="edu-degree">Bachelor of Computer Engineering</div>
+                    <div class="edu-date">2022 - Present</div>
+                    <div class="edu-gpa">GPA: 3.68 / 4.00</div>
+                </div>
+            </div>
+
+            <!-- PRESTIGIOUS PROGRAMS -->
+            <div class="programs-grid">
+                
+                <!-- 1. Siber Vatan -->
+                <div class="program-card">
+                    <div class="program-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="program-content">
+                        <span class="badge">Nov 2025 - Present</span>
+                        <h4>Siber Vatan Program</h4>
+                        <span class="program-org">National Cyber Security Competency Center</span>
+                        <p class="program-desc">
+                            Selected for the prestigious "Cyber Homeland" program. Receiving elite training in cyber security, secure coding, and reverse engineering.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2. Data Analysis School -->
+                <div class="program-card">
+                    <div class="program-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="program-content">
+                        <span class="badge">Sep 2025 - Present</span>
+                        <h4>Data Analysis School</h4>
+                        <span class="program-org">YÖK & Top Universities Collaboration</span>
+                        <p class="program-desc">
+                            Participating in a high-level data science specialization program organized by the Council of Higher Education (YÖK). Focusing on big data & AI.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 3. Savunma Sanayii 101 -->
+                <div class="program-card">
+                    <div class="program-icon"><i class="fas fa-fighter-jet"></i></div>
+                    <div class="program-content">
+                        <span class="badge">Feb 2025 - May 2025</span>
+                        <h4>Savunma Sanayii 101 Education</h4>
+                        <span class="program-org">Presidency of Defense Industries (SSB)</span>
+                        <p class="program-desc">
+                            Completed the talent program by the Presidency of Defense Industries covering the national defense ecosystem, strategic technologies, and engineering.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h3 class="section-title">Technical Skills</h3>
+            <div class="skills-grid">
+                <span class="skill-tag"><i class="fab fa-flutter"></i> Flutter & Dart</span>
+                <span class="skill-tag"><i class="fab fa-react"></i> React Native</span>
+                <span class="skill-tag"><i class="fas fa-code"></i> C# & .NET</span>
+                <span class="skill-tag"><i class="fab fa-java"></i> Java</span>
+                <span class="skill-tag"><i class="fab fa-android"></i> Kotlin</span>
+                <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+                <span class="skill-tag"><i class="fas fa-database"></i> Database Management (SQL)</span>
+                <span class="skill-tag"><i class="fab fa-unity"></i> Unity</span>
+                <span class="skill-tag"><i class="fas fa-project-diagram"></i> UML & OOP</span>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="experience">
+            <h3 class="section-title">Work Experience</h3>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">Nov 17, 2025 - Present</span>
+                    <h4 class="timeline-title">R&D Project Assistant (İŞKUR Youth Program)</h4>
+                    <div class="timeline-company">Manisa Celal Bayar University - XRLAB</div>
+                    <p class="timeline-desc">
+                        Contributing to advanced R&D activities and TÜBİTAK-supported projects in a laboratory environment.
+                        Participating in the İŞKUR Youth Program, which includes comprehensive awareness training, professional competency workshops, and personal development sessions alongside technical research.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">Aug 2025 - Sep 2025</span>
+                    <h4 class="timeline-title">Android Developer Intern (National Internship Program)</h4>
+                    <div class="timeline-company">Manisa Celal Bayar University - XRLAB</div>
+                    <p class="timeline-desc">
+                        Played a key role in the mobile development team for the "YISIS" (Fire Notification System) project. 
+                        Implemented modern React Native concepts such as Hooks, Context API, and React Navigation to ensure seamless cross-platform performance.
+                        Gained significant experience in agile methodologies, teamwork, and building scalable UI/UX architectures.
+                    </p>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">Mar 2025 - Apr 2025</span>
+                    <h4 class="timeline-title">IT Intern</h4>
+                    <div class="timeline-company">TNC Group</div>
+                    <p class="timeline-desc">
+                        Completed an intensive remote internship track focusing on diverse technical skills.
+                        Developed proficiency in <strong>Python</strong> automation, <strong>Advanced Excel</strong> data management, <strong>AutoCAD</strong> drafting, and <strong>Photoshop</strong> design.
+                        Successfully delivered a distinct capstone project for each tool, demonstrating versatility and commitment to continuous learning.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects-section">
+            <div class="container">
+                <h3 class="section-title">Projects</h3>
+                <div class="project-grid">
+                    
+                    <!-- 1. TÜBİTAK Project (Featured & Updated) -->
+                    <div class="project-card" style="border-color: var(--accent-color);">
+                        <div>
+                            <h4 class="project-title"><i class="fas fa-robot"></i> TÜBİTAK 2209-B: Digital Twin & Robotic Arm</h4>
+                            <div class="project-tech">Industrial IoT • Digital Twin • Robotics</div>
+                            <p class="project-desc">
+                                An industry-oriented research project funded by <strong>TÜBİTAK 2209-B</strong>, conducted in collaboration with <strong>Bosch Termoteknik</strong>. 
+                                The project focuses on integrating Digital Twin technology with robotic arms to optimize industrial automation processes, enabling real-time simulation and predictive control.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 2. YISIS (NEW) -->
+                    <div class="project-card">
+                        <div>
+                            <!-- İsim YİSİS olarak güncellendi -->
+                            <h4 class="project-title">YİSİS: Fire Notification System</h4>
+                            <div class="project-tech">React Native • Maps API • Real-time System</div>
+                            <p class="project-desc">
+                                A critical safety system composed of Web and Mobile modules designed to detect and report wildfires in Turkey. 
+                                Features real-time map visualization for tracking incidents and automatically notifying relevant units. 
+                                I contributed significantly to the mobile development using React Native.
+                            </p>
+                        </div>
+                        <div class="project-links"><a href="https://github.com/miracdogann/yangin_ihbar_mobil" target="_blank"><i class="fab fa-github"></i> View Code</a></div>
+                    </div>
+
+                     <!-- 3. Personal Information System (Fisis) -->
+                     <div class="project-card">
+                        <div>
+                            <h4 class="project-title">Personal Information System</h4>
+                            <div class="project-tech">Flutter • Dart • Mobile App</div>
+                            <p class="project-desc">
+                                A comprehensive mobile utility application built with Flutter, designed to act as a digital vault for personal data.
+                                Includes receipt digitization, expense tracking, and secure archiving of personal records with a clean and intuitive user interface.
+                            </p>
+                        </div>
+                        <div class="project-links"><a href="https://github.com/fevzibagriacik/Fisis" target="_blank"><i class="fab fa-github"></i> View Code</a></div>
+                    </div>
+
+                    <!-- 4. Food Ordering App -->
+                    <div class="project-card">
+                        <div>
+                            <h4 class="project-title">Food Ordering App</h4>
+                            <div class="project-tech">Kotlin • MVVM • Firebase • Room</div>
+                            <p class="project-desc">
+                                A comprehensive mobile application developed during the <strong>Pupilica Android Bootcamp</strong>. 
+                                Built with <strong>Kotlin</strong> using <strong>MVVM architecture</strong>, featuring a robust product listing with RecyclerView, dynamic cart management using <strong>Room Database</strong>, and seamless navigation via Navigation Components.
+                            </p>
+                        </div>
+                        <div class="project-links"><a href="https://github.com/fevzibagriacik/Pupilica_Android_Bootcamp/tree/main/FoodOrderingApp" target="_blank"><i class="fab fa-github"></i> View Code</a></div>
+                    </div>
+
+                    <!-- 5. Dictionary System -->
+                    <div class="project-card">
+                        <div>
+                            <h4 class="project-title">Dictionary Management System</h4>
+                            <div class="project-tech">C# • MSSQL • WinForms</div>
+                            <p class="project-desc">
+                                A robust desktop application for vocabulary management. Features a comprehensive admin dashboard for database CRUD operations, 
+                                interactive quiz modes for user practice, and logic for tracking word memorization status using MSSQL stored procedures.
+                            </p>
+                        </div>
+                        <div class="project-links"><a href="https://github.com/fevzibagriacik/Dictionary_Management_System" target="_blank"><i class="fab fa-github"></i> View Code</a></div>
+                    </div>
+
+                     <!-- 6. League Manager -->
+                     <div class="project-card">
+                        <div>
+                            <h4 class="project-title">League Management System</h4>
+                            <div class="project-tech">Java • Data Structures • Algorithms</div>
+                            <p class="project-desc">
+                                An advanced Java application demonstrating complex Data Structures. 
+                                It implements custom algorithms for automated fixture scheduling, team sorting based on points/averages, and efficient player statistics management without relying on high-level database abstractions.
+                            </p>
+                        </div>
+                        <div class="project-links"><a href="https://github.com/keremmozakca/DS-Project-League-Management" target="_blank"><i class="fab fa-github"></i> View Code</a></div>
+                    </div>
+
+                    <!-- 7. EarthquakeGame -->
+                    <div class="project-card">
+                        <div>
+                            <h4 class="project-title">Teknofest Project: Earthquake Sim</h4>
+                            <div class="project-tech">Unity • Blender • Educational</div>
+                            <p class="project-desc">
+                                An interactive 3D simulation designed for <strong>Teknofest Education Category</strong> to teach children earthquake safety and emergency preparedness. 
+                                Features realistic environments modeled in <strong>Blender</strong> and gamified safety scenarios developed in <strong>Unity</strong> to increase awareness through immersion.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 8. The Final Host -->
+                    <div class="project-card">
+                        <div>
+                            <h4 class="project-title">The Final Host</h4>
+                            <div class="project-tech">Unity • Strategy • Game Jam</div>
+                            <p class="project-desc">
+                                A dark strategy card game where death is a resource. Players must strategically bury corpses in specific graveyard slots to trigger unique card effects and chain reactions. 
+                                Balances resource management with tactical positioning to survive against waves of enemies.
+                            </p>
+                        </div>
+                        <div class="project-links"><a href="https://github.com/fevzibagriacik/The-Final-Host" target="_blank"><i class="fab fa-github"></i> View Code</a></div>
+                    </div>
+
+                    <!-- 9. Living with AI -->
+                    <div class="project-card">
+                        <div>
+                            <h4 class="project-title">AI Overlord: Protocol Zero</h4>
+                            <div class="project-tech">Unity • Game Jam • AI Narrative</div>
+                            <p class="project-desc">
+                                A narrative-driven 2D top-down game exploring the theme of an AI takeover. 
+                                Developed in 26 hours for a Game Jam, it features AI-generated dialogues and a dystopian storyline where players navigate a world controlled by a rogue artificial intelligence.
+                            </p>
+                        </div>
+                        <div class="project-links"><a href="https://github.com/fevzibagriacik/DOGEGameJam" target="_blank"><i class="fab fa-github"></i> View Code</a></div>
+                    </div>
+
+                     <!-- 10. Gatesss -->
+                     <div class="project-card">
+                        <div>
+                            <h4 class="project-title">Gatesss</h4>
+                            <div class="project-tech">Unity • Platformer • Physics</div>
+                            <p class="project-desc">
+                                A fast-paced 2D platformer emphasizing speed and precision. 
+                                Players control a character that must navigate through complex levels to reach specific gates, mastering momentum and jump mechanics to overcome obstacles without any puzzle elements.
+                            </p>
+                        </div>
+                        <div class="project-links"><a href="https://github.com/fevzibagriacik/Gatesss" target="_blank"><i class="fab fa-github"></i> View Code</a></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Community & Volunteering -->
+        <section>
+            <div class="container">
+                <div class="activities-grid">
+                    
+                    <!-- Community -->
+                    <div class="activity-card">
+                        <h3><i class="fas fa-users"></i> Community Leadership</h3>
+                        <ul class="activity-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <span class="activity-role">Sponsor & Membership Team Lead</span>
+                                    <span class="activity-place">Game Design and Developers Community (09/2024 - Present)</span>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <span class="activity-role">Management Team Member</span>
+                                    <span class="activity-place">Digital Game Development Team (10/2023 - 09/2024)</span>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <!-- Başlık güncellendi -->
+                                    <span class="activity-role">Event Coordinator Member</span>
+                                    <span class="activity-place">Game Factory Club (10/2023 - 06/2024)</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Volunteering -->
+                    <div class="activity-card">
+                        <h3><i class="fas fa-hands-helping"></i> Volunteering</h3>
+                        <ul class="activity-list">
+                            <li>
+                                <i class="fas fa-heart"></i>
+                                <div>
+                                    <span class="activity-role">Social Responsibility Volunteer</span>
+                                    <span class="activity-place">Manisa Organized Industrial Zone Primary School</span>
+                                    <p style="margin-top:5px; font-size:0.9rem; opacity:0.8;">
+                                        Provided tech support and organized interactive activities to spark students' interest in technology.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="cert-section">
+            <div class="container">
+                <h3 class="section-title">Certifications</h3>
+                <div class="cert-grid">
+                    
+                    <!-- NEW: Savunma Sanayii 101 -->
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-fighter-jet"></i></div>
+                        <div class="cert-info">
+                            <strong>Savunma Sanayii 101</strong>
+                            <span>Presidency of Defense Industries (SSB) • 05/2025</span>
+                        </div>
+                    </div>
+
+                    <!-- 1. Dart (BTK) -->
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fab fa-google"></i></div>
+                        <div class="cert-info">
+                            <strong>Dart Programming Language</strong>
+                            <span>BTK Academy (10 hours) • 07/2025</span>
+                        </div>
+                    </div>
+
+                    <!-- 2. Android Bootcamp (Pupilica) -->
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="cert-info">
+                            <strong>Android Development Bootcamp</strong>
+                            <span>Pupilica (48 hours) • 04/2025</span>
+                        </div>
+                    </div>
+
+                    <!-- 3. Entrepreneurship (KOSGEB) -->
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-lightbulb"></i></div>
+                        <div class="cert-info">
+                            <strong>Traditional Entrepreneurship</strong>
+                            <span>KOSGEB • 02/2025</span>
+                        </div>
+                    </div>
+
+                    <!-- 4. Visual Programming -->
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-desktop"></i></div>
+                        <div class="cert-info">
+                            <strong>Visual Programming</strong>
+                            <span>Şehzadeler Public Ed. Ctr. (248 hours) • 03/2024</span>
+                        </div>
+                    </div>
+
+                    <!-- 5. Keyboard Techniques -->
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-keyboard"></i></div>
+                        <div class="cert-info">
+                            <strong>Keyboard Techniques</strong>
+                            <span>Şehzadeler Public Ed. Ctr. (108 hours) • 12/2023</span>
+                        </div>
+                    </div>
+
+                    <!-- 6. Computer Hardware -->
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-microchip"></i></div>
+                        <div class="cert-info">
+                            <strong>Computer Hardware</strong>
+                            <span>Şehzadeler Public Ed. Ctr. (180 hours) • 02/2023</span>
+                        </div>
+                    </div>
+
+                    <!-- 7. Computer Operator -->
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-laptop-code"></i></div>
+                        <div class="cert-info">
+                            <strong>Computer Operator</strong>
+                            <span>Şakirpaşa Public Ed. Ctr. (163 hours) • 08/2021</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2025 Fevzi Bağrıaçık</p>
+        </footer>
+    </div>
+
+</body>
+</html>
