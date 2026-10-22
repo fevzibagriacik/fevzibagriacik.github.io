@@ -507,12 +507,15 @@
     </dl>
 
     <p class="lede">
-      I have shipped working software in three very different domains rather than staying in one: a
+      I have shipped working software in several very different domains rather than staying in one: a
       <strong>predictive-maintenance system for 53 industrial water pumps</strong> at MASKİ, the
-      <strong>Android client of an EU-funded wildfire early-warning project</strong>, and
+      <strong>Android client of an EU-funded wildfire early-warning project</strong>, a
+      <strong>real-time content-safety API</strong> built in a 24-hour IBM Z Datathon, and
       <strong>Unity games and industrial simulations</strong> including a TÜBİTAK 2209-B digital twin
-      built with Bosch Termoteknik. What connects them is the same habit: take a problem from raw
-      data or an empty scene all the way to something a person can actually use.
+      built with Bosch Termoteknik. Right now I am building <strong>Ovocab</strong>, a vocabulary app
+      whose exercises and stories are written by a language model. What connects them is the same
+      habit: take a problem from raw data or an empty scene all the way to something a person can
+      actually use.
     </p>
 
     <nav class="links">
@@ -533,16 +536,18 @@
       <div class="focus">
         <span class="num mono">AI / ML</span>
         <h3>Models that reach production</h3>
-        <p>Anomaly detection on industrial sensor data, object detection for workplace safety, and the
-           unglamorous parts around them — labelling, thresholds, retraining, a dashboard someone opens.</p>
-        <p class="stack">Python · PyTorch · XGBoost · scikit-learn · YOLOv8 · pandas · OpenCV · Streamlit</p>
+        <p>Anomaly detection on industrial sensor data, object detection for workplace safety, text
+           classification that flags harmful messages, and the unglamorous parts around them —
+           labelling, thresholds, retraining, a dashboard someone opens.</p>
+        <p class="stack">Python · PyTorch · XGBoost · scikit-learn · YOLOv8 · pandas · OpenCV · Streamlit · FastAPI · Claude API</p>
       </div>
       <div class="focus">
         <span class="num mono">MOBILE</span>
         <h3>Below the framework layer</h3>
         <p>Native Kotlin, React Native and Flutter. When a feature needs a foreground service or a
-           broadcast receiver, I write it natively instead of looking for a plugin.</p>
-        <p class="stack">Kotlin · MVVM · Room · Firebase · React Native · Expo · Flutter · Dart</p>
+           broadcast receiver, I write it natively instead of looking for a plugin — and on Ovocab I
+           own the backend too, from the Supabase schema to the model that writes the content.</p>
+        <p class="stack">Kotlin · MVVM · Room · Firebase · React Native · Expo Router · Flutter · Supabase · Claude API</p>
       </div>
       <div class="focus">
         <span class="num mono">GAME / XR</span>
@@ -643,7 +648,7 @@
     <div class="sec-head">
       <span class="sec-index mono">03</span>
       <h2>Projects</h2>
-      <span class="sec-note" id="projCount">12 shown</span>
+      <span class="sec-note" id="projCount">15 shown</span>
     </div>
 
     <div class="filters" role="group" aria-label="Filter projects">
@@ -655,6 +660,48 @@
     </div>
 
     <div class="proj-grid" id="projGrid">
+
+      <article class="proj featured" data-cat="ai">
+        <div class="proj-top">
+          <h3>SafeNet — Real-Time Message Safety API</h3>
+          <span class="status live">IBM Z Datathon</span>
+        </div>
+        <p>An API a messaging platform calls before a message is delivered: it scores every sentence,
+           names why it is harmful — threat, racism, religion, gender, sexual content or plain
+           insult — and answers with deliver, censor, hold or block. Built with my team in a
+           24-hour datathon and served from IBM LinuxONE (s390x). I owned the model layer: hashed word
+           and character n-grams with logistic regression, trained on 188K deduplicated messages
+           merged from five public datasets, plus synthetic neutral sentences so that identity words
+           are not read as insults.</p>
+        <div class="metrics">
+          <div><span class="k">Harmful caught</span><span class="v">86.6%</span></div>
+          <div><span class="k">False alarms</span><span class="v">0.6%</span></div>
+          <div><span class="k">Innocent blocked</span><span class="v">0 / 124</span></div>
+          <div><span class="k">Latency p99</span><span class="v">8.3 ms</span></div>
+        </div>
+        <p class="stack-line">Python · scikit-learn · FastAPI · PostgreSQL · IBM LinuxONE (s390x)</p>
+      </article>
+
+      <article class="proj featured" data-cat="mobile ai">
+        <div class="proj-top">
+          <h3>Ovocab — Vocabulary Learning App</h3>
+          <span class="status wip">in development</span>
+        </div>
+        <p>A full-stack app I build on my own: an Expo Router client over a Supabase backend
+           (PostgreSQL, auth, edge functions). The Claude API writes the graded stories and exercises
+           and assigns every dictionary word a CEFR level, so the content is generated rather than
+           hand-written. On top of that sit a Wiktionary-based dictionary, personal word libraries,
+           flashcards, speech exercises, points, streaks and weekly leagues. Three of the twelve
+           exercise types are AI-written reading, listening and writing drills kept for the Premium
+           tier; Android builds ship through EAS.</p>
+        <div class="metrics">
+          <div><span class="k">Exercise types</span><span class="v">12</span></div>
+          <div><span class="k">Course languages</span><span class="v">6</span></div>
+          <div><span class="k">UI languages</span><span class="v">10</span></div>
+          <div><span class="k">Leagues</span><span class="v">5</span></div>
+        </div>
+        <p class="stack-line">React Native · Expo SDK 57 · TypeScript · Supabase · Claude API · EAS Build</p>
+      </article>
 
       <article class="proj featured" data-cat="ai">
         <div class="proj-top">
@@ -833,15 +880,16 @@
     </div>
     <div class="skill-block">
       <h3>ML &amp; Data</h3>
-      <p>PyTorch · scikit-learn · XGBoost · Isolation Forest · YOLOv8 / Ultralytics · pandas · NumPy ·
-         OpenCV · anomaly detection · feature engineering · precision / recall / F2 evaluation ·
-         Streamlit · Plotly · SQL Server · parquet</p>
+      <p>PyTorch · scikit-learn · XGBoost · Isolation Forest · YOLOv8 / Ultralytics · pandas ·
+         NumPy · OpenCV · anomaly detection · text classification · LLM integration (Claude API) ·
+         feature engineering · precision / recall / F2 evaluation · FastAPI · Streamlit · Plotly ·
+         SQL Server · parquet</p>
     </div>
     <div class="skill-block">
       <h3>Mobile</h3>
       <p>Android (Kotlin, MVVM, Room, Firebase, WorkManager, DataStore, foreground services,
-         BroadcastReceiver, app widgets) · React Native (Expo, Hooks, Context API, React Navigation) ·
-         Flutter &amp; Dart</p>
+         BroadcastReceiver, app widgets) · React Native (Expo Router, Hooks, Context API, React
+         Navigation) · Flutter &amp; Dart · Supabase · EAS Build</p>
     </div>
     <div class="skill-block">
       <h3>Game &amp; XR</h3>
